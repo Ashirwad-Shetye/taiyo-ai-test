@@ -1,11 +1,16 @@
 import "./App.css";
+import CreateContact from "./pages/createContact";
+import Contacts from "./pages/contacts";
+import ChartsAndMaps from "./pages/chartsAndMaps";
+import SideBar from "./components/sideBar/SideBar";
 
 function App() {
   return (
     <>
-      <h1 className="text-3xl text-blue-300 font-bold underline">
-        Hello world!
-      </h1>
+      <main>
+        <SideBar />
+        <div></div>
+      </main>
     </>
   );
 }
