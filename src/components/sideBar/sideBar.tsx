@@ -10,10 +10,10 @@ function SideBar() {
         <Logo />
         <div className="flex-1 flex justify-center">
           <div className="h-full mt-10 space-y-8 max-h-80 flex flex-col items-center">
-            <SideBarButton>
+            <SideBarButton path={"/"}>
               <LuContact />
             </SideBarButton>
-            <SideBarButton>
+            <SideBarButton path={"charts-and-maps"}>
               <AiOutlineLineChart />
             </SideBarButton>
           </div>
