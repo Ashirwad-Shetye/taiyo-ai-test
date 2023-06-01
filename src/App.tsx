@@ -7,15 +7,15 @@ function App() {
   return (
     <>
       <main className="relative h-[100dvh] flex space-x-3">
-        <SideBar />
-        <div className="flex-1">
-          <Router>
+        <Router>
+          <SideBar />
+          <div className="flex-1">
             <Routes>
               <Route path="/" element={<Contacts />} />
-              <Route path="/charts-and-maps" element={<ChartsAndMaps />} />
+              <Route path="charts-and-maps" element={<ChartsAndMaps />} />
             </Routes>
-          </Router>
-        </div>
+          </div>
+        </Router>
       </main>
     </>
   );
