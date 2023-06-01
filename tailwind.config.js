@@ -14,6 +14,9 @@ export default {
         accent1: "#fce6dd",
         accent2: "#e76c82",
       },
+      fontFamily: {
+        poppins: "Poppins, sans-serif",
+      },
     },
   },
   plugins: [],

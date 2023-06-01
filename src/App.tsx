@@ -1,4 +1,3 @@
-import CreateContact from "./pages/createContact";
 import Contacts from "./pages/contacts";
 import ChartsAndMaps from "./pages/chartsAndMaps";
 import SideBar from "./components/sideBar/sideBar";
@@ -12,8 +11,7 @@ function App() {
         <div className="flex-1">
           <Router>
             <Routes>
-              <Route path="/" element={<CreateContact />} />
-              <Route path="/contacts" element={<Contacts />} />
+              <Route path="/" element={<Contacts />} />
               <Route path="/charts-and-maps" element={<ChartsAndMaps />} />
             </Routes>
           </Router>
