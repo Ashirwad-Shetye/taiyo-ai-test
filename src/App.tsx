@@ -1,15 +1,14 @@
-import "./App.css";
 import CreateContact from "./pages/createContact";
 import Contacts from "./pages/contacts";
 import ChartsAndMaps from "./pages/chartsAndMaps";
-import SideBar from "./components/sideBar/SideBar";
+import SideBar from "./components/sideBar/sideBar";
 
 function App() {
   return (
     <>
-      <main>
+      <main className="relative h-[100dvh] flex">
         <SideBar />
-        <div></div>
+        <div className="flex-1"></div>
       </main>
     </>
   );
