@@ -7,3 +7,9 @@
 :root{
     background-color: #f3fdff;
 }
+
+@layer{
+    .leaflet-container{
+        height: 100%;
+    }
+}
