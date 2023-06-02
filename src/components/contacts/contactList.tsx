@@ -3,7 +3,7 @@ import { selectContacts } from "../../store/reducer/contactsReducer";
 import { useSelector } from "react-redux";
 
 interface Props {
-  openEditModal: () => void;
+  openEditModal: (id: number) => void;
 }
 
 function ContactList({ openEditModal }: Props) {

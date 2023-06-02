@@ -1,4 +1,49 @@
-function EditContact() {
+import { useState } from "react";
+import {
+  updateContact,
+  selectContacts,
+} from "../../store/reducer/contactsReducer";
+import { useSelector, useDispatch } from "react-redux";
+
+interface Props {
+  id: number | undefined;
+  closeEditModal: () => void;
+}
+
+function EditContact({ id, closeEditModal }: Props) {
+  const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
+
+  const { firstName, lastName, status }: any = contacts.find(
+    (c) => c.id === id
+  );
+
+  const [contact, setContact] = useState({
+    firstName: firstName,
+    lastName: lastName,
+    status: status,
+  });
+
+  const onChangeHandler = (e: React.SyntheticEvent<EventTarget>) => {
+    e.preventDefault();
+    const target = e.target as HTMLInputElement;
+    setContact((prevState) => ({
+      ...prevState,
+      [target.name]: target.value,
+    }));
+  };
+
+  const handleUpdateContact = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    dispatch(
+      updateContact({
+        id: id,
+        ...contact,
+      })
+    );
+    closeEditModal();
+  };
+
   return (
     <div className="absolute top-0 w-full h-full rounded-xl flex items-center justify-center bg-white px-5 flex-1 font-poppins z-50">
       <div>
@@ -15,7 +60,9 @@ function EditContact() {
               <input
                 type="text"
                 maxLength={24}
-                placeholder="Enter here..."
+                name="firstName"
+                placeholder={firstName}
+                onChange={onChangeHandler}
                 className="shadow-md rounded-md p-2"
               />
             </div>
@@ -24,7 +71,9 @@ function EditContact() {
               <input
                 type="text"
                 maxLength={24}
-                placeholder="Enter here..."
+                name="lastName"
+                placeholder={lastName}
+                onChange={onChangeHandler}
                 className="shadow-md rounded-md p-2"
               />
             </div>
@@ -32,16 +81,29 @@ function EditContact() {
               <h1 className="w-24">Status:</h1>
               <div className="flex flex-col">
                 <label>
-                  <input type="radio" name="status" value="active" /> Active
+                  <input
+                    type="radio"
+                    name="status"
+                    value="active"
+                    onChange={onChangeHandler}
+                  />{" "}
+                  Active
                 </label>
                 <label>
-                  <input type="radio" name="status" value="inactive" /> Inactive
+                  <input
+                    type="radio"
+                    name="status"
+                    value="inactive"
+                    onChange={onChangeHandler}
+                  />{" "}
+                  Inactive
                 </label>
               </div>
             </div>
           </div>
           <button
-            className="h-12 w-40 mx-auto px-3 flex items-center justify-center space-x-2 bg-secondary/50 text-white rounded-md hover:scale-105 
+            onClick={handleUpdateContact}
+            className="h-12 max-w-[12rem] mx-auto px-3 flex items-center justify-center space-x-2 bg-secondary/50 text-white rounded-md hover:scale-105 
               hover:shadow-md duration-150"
           >
             <h1>Save Edited Contact</h1>

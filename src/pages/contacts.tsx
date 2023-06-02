@@ -7,6 +7,7 @@ import EditContact from "../components/contacts/editContact";
 function Contacts() {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [id, setId] = useState<number>();
 
   const openCreateModal = () => {
     setIsCreateModalOpen(true);
@@ -16,8 +17,12 @@ function Contacts() {
     setIsCreateModalOpen(false);
   };
 
-  const openEditModal = () => {
+  const openEditModal = (id: number) => {
+    setId(id);
     setIsEditModalOpen(true);
+  };
+  const closeEditModal = () => {
+    setIsEditModalOpen(false);
   };
 
   return (
@@ -26,7 +31,9 @@ function Contacts() {
         <div className="h-16 w-full pl-5 flex items-center text-left">
           <h1 className="text-2xl font-bold text-gray-700">Contacts</h1>
         </div>
-        {isEditModalOpen && <EditContact />}
+        {isEditModalOpen && (
+          <EditContact id={id} closeEditModal={closeEditModal} />
+        )}
         {isCreateModalOpen ? null : (
           <div className="h-24 flex justify-center items-center">
             <CreateContactButton openModal={openCreateModal} />

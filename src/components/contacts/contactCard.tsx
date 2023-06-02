@@ -7,7 +7,9 @@ function ContactCard({ contact, openEditModal }) {
   const dispatch = useDispatch();
 
   const handleDeleteContact = (id: number) => {
-    dispatch(deleteContact(id));
+    if (window.confirm("Are you sure you want to delete this contact?")) {
+      dispatch(deleteContact(id));
+    }
   };
 
   return (
@@ -30,7 +32,7 @@ function ContactCard({ contact, openEditModal }) {
       </div>
       <div className="flex flex-col mt-6 space-y-5 w-fit mx-auto">
         <button
-          onClick={openEditModal}
+          onClick={() => openEditModal(id)}
           className="h-10 w-20 px-2 text-center space-x-2 bg-secondary/50 text-white rounded-md hover:scale-105 
           hover:shadow-md duration-150"
         >
