@@ -25,7 +25,7 @@ function Contacts() {
             <CreateContactButton openModal={openModal} />
           </div>
         )}
-        <div className="flex-1 flex justify-center items-center">
+        <div className="flex-1 w-full flex justify-center items-center">
           {isModalOpen ? (
             <CreateContactForm closeModal={closeModal} />
           ) : (
