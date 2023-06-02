@@ -20,7 +20,7 @@ Contact management application with charts and maps to visualise covid cases.
 
 # Demo
 
-[Live demo](https://ashirwadshetye.com/)
+[Live demo](https://taiyo.ashirwadshetye.com/)
 
 <br/>
 
