@@ -1,13 +1,13 @@
 import { AiOutlineUserAdd } from "react-icons/ai";
 
 interface Props {
-  handleCreateContactOpen: any;
+  openModal: () => void;
 }
 
-function CreateContactButton({ handleCreateContactOpen }: Props) {
+function CreateContactButton({ openModal }: Props) {
   return (
     <button
-      onClick={() => handleCreateContactOpen(true)}
+      onClick={openModal}
       className="h-12 px-3 flex items-center space-x-2 bg-secondary/50 text-white rounded-md hover:scale-105 
         hover:shadow-md duration-150"
     >
