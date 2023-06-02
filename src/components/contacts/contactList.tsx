@@ -9,11 +9,11 @@ interface Props {
 function ContactList({ openEditModal }: Props) {
   const contacts = useSelector(selectContacts);
   return (
-    <div className="flex-1 overflow-hidden">
+    <div className="flex-1 overflow-hidden mx-5">
       <h1 className="text-lg font-semibold text-gray-500 mx-5">Contact List</h1>
       <div
         className="overflow-x-hidden justify-items-center mt-5 h-[26rem] grid grid-flow-row-dense md:grid-cols-2 
-        lg:grid-cols-3 xl:grid-cols-4 gap-5 overflow-y-scroll"
+        lg:grid-cols-3 gap-5 overflow-y-scroll"
       >
         {contacts &&
           contacts.map((contact) => (
