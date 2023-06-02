@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "../store";
 
 interface Contact {
     id: number;
@@ -38,5 +39,7 @@ const contactsSlice = createSlice({
 })
 
 export const { addContact, updateContact, deleteContact } = contactsSlice.actions;
+
+export const selectContacts = (state: RootState) => state.contact.contacts;
 
 export default contactsSlice.reducer;

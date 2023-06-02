@@ -2,34 +2,41 @@ import { useState } from "react";
 import CreateContactButton from "../components/contacts/createContactButton";
 import CreateContactForm from "../components/contacts/createContactForm";
 import ContactList from "../components/contacts/contactList";
+import EditContact from "../components/contacts/editContact";
 
 function Contacts() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
-  const openModal = () => {
-    setIsModalOpen(true);
+  const openCreateModal = () => {
+    setIsCreateModalOpen(true);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const closeCreateModal = () => {
+    setIsCreateModalOpen(false);
+  };
+
+  const openEditModal = () => {
+    setIsEditModalOpen(true);
   };
 
   return (
-    <div className="h-screen relative flex">
-      <div className="bg-white m-3 flex flex-col justify-center items-center flex-1 rounded-xl shadow-xl">
+    <div className="h-screen flex">
+      <div className="bg-white relative m-3 flex flex-col justify-center items-center flex-1 rounded-xl shadow-xl">
         <div className="h-16 w-full pl-5 flex items-center text-left">
           <h1 className="text-2xl font-bold text-gray-700">Contacts</h1>
         </div>
-        {isModalOpen ? null : (
+        {isEditModalOpen && <EditContact />}
+        {isCreateModalOpen ? null : (
           <div className="h-24 flex justify-center items-center">
-            <CreateContactButton openModal={openModal} />
+            <CreateContactButton openModal={openCreateModal} />
           </div>
         )}
         <div className="flex-1 w-full flex justify-center items-center">
-          {isModalOpen ? (
-            <CreateContactForm closeModal={closeModal} />
+          {isCreateModalOpen ? (
+            <CreateContactForm closeModal={closeCreateModal} />
           ) : (
-            <ContactList />
+            <ContactList openEditModal={openEditModal} />
           )}
         </div>
       </div>

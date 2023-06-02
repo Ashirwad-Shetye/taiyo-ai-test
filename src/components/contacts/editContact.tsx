@@ -1,6 +1,6 @@
 function EditContact() {
   return (
-    <div className="relative px-5 flex-1 font-poppins">
+    <div className="absolute top-0 w-full h-full rounded-xl flex items-center justify-center bg-white px-5 flex-1 font-poppins z-50">
       <div>
         <h1 className="mx-auto h-12 my-10 pb-5 text-xl text-center font-bold text-gray-500">
           Edit Contact

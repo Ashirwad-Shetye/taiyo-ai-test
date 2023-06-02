@@ -1,18 +1,13 @@
-import { useEffect, useState } from "react";
 import ContactCard from "./contactCard";
-import { getItemFromStorage } from "../../utils/storage";
+import { selectContacts } from "../../store/reducer/contactsReducer";
+import { useSelector } from "react-redux";
 
-function ContactList() {
-  const [contacts, setContacts] = useState<[] | null>(null);
-  useEffect(() => {
-    const storedData = getItemFromStorage("contacts");
+interface Props {
+  openEditModal: () => void;
+}
 
-    if (storedData) {
-      const parsedData = JSON.parse(storedData);
-      setContacts(parsedData);
-    }
-  }, []);
-
+function ContactList({ openEditModal }: Props) {
+  const contacts = useSelector(selectContacts);
   return (
     <div className="flex-1 overflow-hidden">
       <h1 className="text-lg font-semibold text-gray-500 mx-5">Contact List</h1>
@@ -21,8 +16,18 @@ function ContactList() {
         lg:grid-cols-3 xl:grid-cols-4 gap-5 overflow-y-scroll"
       >
         {contacts &&
-          contacts.map((contact) => <ContactCard contact={contact} />)}
-        {!contacts && <h1>Empty</h1>}
+          contacts.map((contact) => (
+            <ContactCard contact={contact} openEditModal={openEditModal} />
+          ))}
+        {contacts?.length === 0 && (
+          <h1 className="w-80 cursor-default text-center absolute my-auto mx-auto py-5 bg-accent1/50 rounded-xl">
+            No Contact found. <br /> Please add contact from <br />
+            <span className="font-semibold text-purple-600">
+              Create contact
+            </span>{" "}
+            button
+          </h1>
+        )}
       </div>
     </div>
   );
